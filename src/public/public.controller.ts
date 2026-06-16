@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ServicesService } from 'src/services/services.service';
 
 @ApiTags('public')
@@ -9,6 +9,7 @@ export class PublicController {
 
   @Get('services')
   @ApiOperation({ summary: 'Listar todos los servicios disponibles (sin autenticación)' })
+  @ApiResponse({ status: 200, description: 'Lista de servicios con nombre del freelancer.' })
   findAll() {
     return this.servicesService.findAll();
   }
